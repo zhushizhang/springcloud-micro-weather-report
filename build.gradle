@@ -1,0 +1,44 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.2.RELEASE'
+	}
+	repositories {
+		maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        mavenLocal()
+        mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.supcon.cloud'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    mavenLocal()
+    mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	//httpclient“¿¿µ
+	compile('org.apache.httpcomponents:httpclient:4.5.3')
+	//redis“¿¿µ
+	compile('org.springframework.boot:spring-boot-starter-data-redis')
+	//quartz
+	compile('org.springframework.boot:spring-boot-starter-quartz')
+	//ÃÌº”SpringBoot THymeleaf starter
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2')
+	runtime('mysql:mysql-connector-java')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
